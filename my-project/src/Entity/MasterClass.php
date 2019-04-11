@@ -38,8 +38,9 @@ class MasterClass
 
  public function __construct() 
     {
-        $this->CreatedAt = new \DateTime('now');
-        $this->IsActive = 0;
+    $this->CreatedAt=new \DateTime("now");
+    $this->UpdatedAt=new \DateTime("now");
+    $this->IsActive=0;
     }
 
     public function getId(): ?int

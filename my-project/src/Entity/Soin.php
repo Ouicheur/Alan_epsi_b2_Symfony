@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AttackRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SoinRepository")
  */
-class Attack extends MasterClass
+class Soin extends MasterClass
 {
     /**
      * @ORM\Id()
@@ -24,18 +24,12 @@ class Attack extends MasterClass
     /**
      * @ORM\Column(type="integer")
      */
-    private $power;
-
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    private $type;
+    private $Effect;
 
     public function __construct()
     {
-        parent::__construct();
+    	parent::__construct();
     }
-
 
     public function getId(): ?int
     {
@@ -54,26 +48,14 @@ class Attack extends MasterClass
         return $this;
     }
 
-    public function getPower(): ?int
+    public function getEffect(): ?int
     {
-        return $this->power;
+        return $this->Effect;
     }
 
-    public function setPower(int $power): self
+    public function setEffect(int $Effect): self
     {
-        $this->power = $power;
-
-        return $this;
-    }
-
-    public function getType(): ?int
-    {
-        return $this->type;
-    }
-
-    public function setType(int $type): self
-    {
-        $this->type = $type;
+        $this->Effect = $Effect;
 
         return $this;
     }

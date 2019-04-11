@@ -38,3 +38,5 @@ class AttackFixtures extends Fixture
 		];
 	}
 }
+
+?>

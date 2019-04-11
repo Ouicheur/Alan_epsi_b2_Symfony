@@ -17,7 +17,8 @@ class PokemonFixtures extends Fixture
 			->setName($name)
 			->setPV($PV)
 			->setType($type)
-			->addAttack($this->getReference($name_attack));
+			->addAttack($this->getReference($name_attack))
+			->addAttack($this->getReference('Charge'));
 
 			$manager->persist($pokemon);
 		}
@@ -28,9 +29,11 @@ class PokemonFixtures extends Fixture
 	public function getPokemon()
 	{
 		return[
-			['BouleDePu', 10, Type::Type_water, 'Charge'],
-			['Vergiture', 100, Type::Type_plant, 'Charge'],
-			['Diahrer', 20, Type::Type_fire, 'Charge']
+			['BouleDePu', 10, Type::Type_water, 'Crachats'],
+			['Vergiture', 10, Type::Type_plant, 'LancerDeFeuilles'],
+			['Diahrer', 20, Type::Type_fire, 'BrulureDeTapis']
 		];
 	}
 }
+
+?>
