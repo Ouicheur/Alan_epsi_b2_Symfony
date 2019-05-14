@@ -19,11 +19,11 @@ class PokemonRepository extends ServiceEntityRepository
         parent::__construct($registry, Pokemon::class);
     }
 
-     public function findByType($Type)
+     public function findByType($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :type')
-            ->setParameter('type', $type)
+            ->andWhere('p.type = :val')
+            ->setParameter('val', $value)
             ->orderBy('p.name', 'ASC')
             ->setMaxResults(5)
             ->getQuery()
