@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DresseurRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class Dresseur implements UserInterface
 {
@@ -32,6 +34,16 @@ class Dresseur implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PokemonTeam", inversedBy="Dresseur")
+     */
+    private $pokemonTeam;
 
     public function getId(): ?int
     {
@@ -109,5 +121,29 @@ class Dresseur implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPokemonTeam(): ?PokemonTeam
+    {
+        return $this->pokemonTeam;
+    }
+
+    public function setPokemonTeam(?PokemonTeam $pokemonTeam): self
+    {
+        $this->pokemonTeam = $pokemonTeam;
+
+        return $this;
     }
 }

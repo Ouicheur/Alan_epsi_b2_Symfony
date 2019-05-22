@@ -94,3 +94,4 @@ class PokemonController extends AbstractController
         return $this->redirectToRoute('pokemon_index');
     }
 }
+?>

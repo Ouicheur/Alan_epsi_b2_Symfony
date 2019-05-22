@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inventaire{% endblock %}
+
+{% block body %}
+    <h1>Inventaire</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Effect</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soin in soin %}
+            <tr>
+                <td>{{ soin.name }}</td>
+                <td>{{ soin.Effect }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

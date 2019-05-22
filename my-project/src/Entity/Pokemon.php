@@ -38,6 +38,11 @@ class Pokemon extends MasterClass
      */
     private $attack;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PokemonTeam", inversedBy="Pokemon")
+     */
+    private $pokemonTeam;
+
     public function __construct()
     {
         parent::__construct();
@@ -107,6 +112,18 @@ class Pokemon extends MasterClass
         if ($this->attack->contains($attack)) {
             $this->attack->removeElement($attack);
         }
+
+        return $this;
+    }
+
+    public function getPokemonTeam(): ?PokemonTeam
+    {
+        return $this->pokemonTeam;
+    }
+
+    public function setPokemonTeam(?PokemonTeam $pokemonTeam): self
+    {
+        $this->pokemonTeam = $pokemonTeam;
 
         return $this;
     }
